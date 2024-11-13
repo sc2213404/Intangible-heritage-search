@@ -1,3 +1,12 @@
+#功能总结
+
+|  前端  |  flask框架  |  后端  |
+|:------:|:------:|:------:|
+| 动画展示   |   接受前端图片到后端   | 数据增强   |
+| 按后端返回id渲染展示对应图片   |   返回后端匹配到的id   | 图像匹配   |
+| 桌角姬   |   *返回后端克隆的桌角姬语音   | *声音克隆   |
+
+
 # Image-Retrieval
 Image retrieval program made in Tensorflow supporting the pretrained networks VGG16, VGG19, InceptionV3 and InceptionV4 and own trained Convolutional Autoencoder that you can train with this tool.
 
