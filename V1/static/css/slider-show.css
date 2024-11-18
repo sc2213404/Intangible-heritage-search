@@ -1,0 +1,194 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+}
+
+.main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  /* box-shadow: 0 3px 10px rgba(0,0,0,0.3); */
+}
+
+.item {
+  width: 300px; 
+  height: 450px;
+  list-style-type: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 30px rgba(255,255,255,0.3) inset;
+  transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
+
+  &:nth-child(1), &:nth-child(2) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+  }
+
+  &:nth-child(3) { left: 50%; }
+  &:nth-child(4) { left: calc(50% + 320px); } /* 调整间距 */
+  &:nth-child(5) { left: calc(50% + 640px); } /* 调整间距 */
+  &:nth-child(6) { left: calc(50% + 960px); opacity: 0; } /* 调整间距 */
+}
+
+.content {
+  width: 40vw;
+  position: absolute;
+  top: 50%;
+  left: 3rem;
+  transform: translateY(-50%);
+  font: 400 0.85rem helvetica,sans-serif;
+  font-family: "楷体";
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  /* text-shadow: 0 3px 8px rgba(0,0,0,0.5); */
+  opacity: 0;
+  display: none;
+
+  & .title {
+    /* font-family: 'arial-black'; */
+    text-transform: uppercase;
+  }
+
+  & .description {
+    line-height: 1.7;
+    margin: 1rem 0 1.5rem;
+    /* font-size: 1rem; */
+  }
+}
+.main .content button {
+  /* width: fit-content; */
+  /* background-color: rgba(0,0,0,0.1); */
+  
+  /* border-radius: 0.25rem; */
+  /*宽高*/
+  width: 120px;
+  height: 60px;
+  /*盒子边距*/
+  margin-top: 40px;
+  /*外边距填充*/
+  padding: 0.5rem;
+  /*游标*/
+  cursor: pointer;
+  /* 字体 */
+  font-family: "楷体";
+  font-size: 20px;
+  color: white;
+  /*背景色*/
+  background-color: transparent;
+  /*其它边*/
+  border:0;
+  /*底边*/
+  border-bottom: 2px solid rgb(211, 8, 35);
+  /*圆角*/
+  border-radius: 5%;
+}
+
+.main .content button:hover {
+  font-size: 22px;
+  background-color: rgba(254, 125, 125, 0.4);
+}
+
+.item:nth-of-type(2) .content {
+  display: block;
+  animation: show 0.75s ease-in-out 0.3s forwards;
+}
+
+@keyframes show {
+  0% {
+    filter: blur(5px);
+    transform: translateY(calc(-50% + 75px));
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.nav {
+  margin-left: 52vw;
+  margin-top: 85vh;
+  /* position: absolute; */
+  /* right: 2%; */
+  /* bottom: 5rem; */
+  /* transform: translateX(-50%); */
+  z-index: 5;
+  user-select: none;
+
+  & .btn {
+    width: 0;
+    height: 0;
+    /* background-color: rgba(255, 255, 255, 0.694); */
+    /* color: rgba(0,0,0,0.7); */
+    border: 24px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.4);
+    /* padding: 0.75rem; */
+    cursor: pointer;
+    font-size: 2rem;
+  }
+
+  & .prev {
+    margin-right: 17rem;
+    border-right: 36px solid rgba(232, 232, 232, 0.8);
+  }
+  & .prev:hover {
+    transition: 0.2s;
+    border-right: 36px solid rgb(200, 200, 200, 0.4);
+  }
+
+  & .next {
+    margin-left: 17rem;
+    border-left: 36px solid rgba(232, 232, 232, 0.8);
+  }
+  & .next:hover {
+    transition: 0.2s;
+    border-left: 36px solid rgba(200, 200, 200, 0.4);
+  }
+}
+
+@media (width > 650px) and (width < 900px) {
+  .content {
+    & .title        { font-size: 1rem; }
+    & .description  { font-size: 0.7rem; }
+    & button        { font-size: 0.7rem; }
+  }
+  .item {
+    width: 160px;
+    height: 270px;
+
+    &:nth-child(3) { left: 50%; }
+    &:nth-child(4) { left: calc(50% + 170px); }
+    &:nth-child(5) { left: calc(50% + 340px); }
+    &:nth-child(6) { left: calc(50% + 510px); opacity: 0; }
+  }
+}
+
+@media (width < 650px) {
+  .content {
+    & .title        { font-size: 0.9rem; }
+    & .description  { font-size: 0.65rem; }
+    & button        { font-size: 0.7rem; }
+  }
+  .item {
+    width: 130px;
+    height: 220px;
+
+    &:nth-child(3) { left: 50%; }
+    &:nth-child(4) { left: calc(50% + 140px); }
+    &:nth-child(5) { left: calc(50% + 280px); }
+    &:nth-child(6) { left: calc(50% + 420px); opacity: 0; }
+  }
+}

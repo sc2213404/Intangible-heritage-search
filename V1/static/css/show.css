@@ -1,0 +1,12 @@
+/* 废案 */
+.show{
+    background-image: url(../images/show_bg.jpg);
+    background-size: cover;
+    height: 90rem;
+}
+.show h1{
+    font-family: font_title;
+    font-size: 3rem;
+    color: #fff;
+    text-align: center;
+}
