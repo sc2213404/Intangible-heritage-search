@@ -1,0 +1,62 @@
+.book {
+    display: flex;
+    flex-direction: initial;
+    flex-wrap: nowrap;
+    width: 80vw;
+    justify-content: space-between; /* 元素等间距排列 */
+    align-items: right;
+    margin-left: 20rem;
+
+}
+/* 这部分的代码的作用是调整b1和b5的相对位置 */
+.book-item.b1 {
+  top: 200%;
+}
+.book-item.b5 {
+  top: 220%;
+}
+.book-item {
+  position: relative;
+  opacity: 0;
+
+}
+.book-item img{
+  width: 100%; /* 图片宽度填满父元素 */
+  height: 20rem; 
+  object-fit: contain; /* 防止图片变形 */
+}
+.book {
+  order: -1; /* 重新排序，使其不受上一个盒子影响 */
+}
+
+
+@keyframes fadeOut {
+  from {
+      opacity: 0;
+      transform: translateY(0);
+  }
+  to {
+      opacity: 0.8;
+      transform: translateY(3em); /* 向下移动3em */
+  }
+}
+@keyframes fadeUp {
+  from {
+      opacity: 0;
+      transform: translateY(0);
+  }
+  to {
+      opacity: 0.8;
+      transform: translateY(-3em); /* 向下移动3em */
+  }
+}
+
+
+.fade-out {
+  animation: fadeOut 3s forwards;
+}
+
+.fade-up {
+  animation: fadeUp 3s forwards;
+}
+
