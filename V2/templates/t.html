@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <link rel="stylesheet" href="../static/css/slider-show.css">
+    <link rel="stylesheet" href="../static/css/font.css">
+    <link rel="stylesheet" href="../static/css/search.css">
+    <link rel="stylesheet" href="../static/css/hallway.css">
+    <link rel="stylesheet" href="../static/css/book.css">
+    <link rel="stylesheet" href="../static/css/display.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="favicon.ico">
+    <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=PcJTMYOMb4xjA4qndHHOpcsrH7bZC85m"></script>
+</head>
+
+<body class="light">
+    <div class="header" style="background-image: url('../static/images/header_bg.png'); background-size: cover; background-position: center;">
+        <img src="../static/images/logo.png" style="position: absolute; width: 4.5rem; "></img>
+        <h1 style="font-family: font_title; text-align: center; margin: 6rem;">非遗图寻</h1>
+        <div class="showtime" style="font-family: font_title">当前时间：2024年10月8-0时54分14秒</div>
+        <img src="../static/images/s5d876d0d105af.png" style="text-align: right;"></img>
+    </div>
+    <script>
+        var t = null;
+        t = setTimeout(time, 1000); //開始运行
+        function time() {
+          clearTimeout(t); //清除定时器
+          dt = new Date();
+          var y = dt.getFullYear();
+          var mt = dt.getMonth() + 1;
+          var day = dt.getDate();
+          var h = dt.getHours(); //获取时
+          var m = dt.getMinutes(); //获取分
+          var s = dt.getSeconds(); //获取秒
+          document.querySelector(".showtime").innerHTML =
+            "当前时间：" +
+            y +
+            "年" +
+            mt +
+            "月" +
+            day +
+            "-" +
+            h +
+            "时" +
+            m +
+            "分" +
+            s +
+            "秒";
+          t = setTimeout(time, 1000); //设定定时器，循环运行
+        }
+    </script>
+    <div class="container2">
+        <div class="wrapper">
+            <div class="items2">
+                <div class="item2" tabindex="0" style="background-image: url(../static/images/{{image_name1}})"></div>
+                <div class="item2" tabindex="0" style="background-image: url(../static/images/{{image_name2}})"></div>
+                <div class="item2" tabindex="0" style="background-image: url(../static/images/{{image_name3}})"></div>
+                <div class="item2" tabindex="0" style="background-image: url(../static/images/{{image_name}})"></div>
+                <div class="item2" tabindex="0" style="background-image: url(../static/images/{{image_name}})"></div>
+                <div class="item2" tabindex="0" style="background-image: url(../static/images/{{image_name}})"></div>
+                <div class="item2" tabindex="0" style="background-image: url(../static/images/{{image_name}})"></div>
+            </div>
+        </div>
+        <!-- <div class="box1"> -->
+            <h2>皮影戏（唐山皮影戏）</h2>
+            <div class="description">
+                <iframe src="https://baike.baidu.com/item/%E7%9A%AE%E5%BD%B1%E6%88%8F%EF%BC%88%E5%94%90%E5%B1%B1%E7%9A%AE%E5%BD%B1%E6%88%8F%EF%BC%89?fromModule=lemma_search-box">
+                </iframe>
+            </div>
+        <!-- </div> -->
+        <!-- <div class="box2"> -->
+            <h2>传承地点展示</h2>
+            <div class="map" id="mapContainer" style="height: 800px;"></div>
+        <!-- </div> -->
+    </div>
+
+    <footer class="footer">
+
+        <div class="social-icons">
+            <a href="https://github.com/ideal130778" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://weibo.com/yourusername" target="_blank" aria-label="Weibo">
+                <i class="fab fa-weibo"></i>
+            </a>
+            <a href="mailto:ideal130778@gmail.com" target="_blank" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+
+        </div>
+        <p class="contact">联系我们</p>
+        <p class="copyright">Copyright © 2024 Idealle. All rights reserved. </p>
+
+        <p class="copyright">版权所有 © 2024 某aigc小组</p>
+    </footer>
+    <script type="text/javascript">
+        // 初始化地图
+        function initMap(keyword) {
+            // 创建地图实例
+            var map = new BMap.Map("mapContainer");
+
+
+            var point = new BMap.Point(104.072, 35.70);
+            map.centerAndZoom(point, 5);
+
+            // 添加地图控件
+            map.addControl(new BMap.NavigationControl());    // 添加平移缩放控件
+            map.addControl(new BMap.ScaleControl());         // 添加比例尺控件
+            map.enableScrollWheelZoom();                     // 启用滚轮放大缩小
+
+            // 创建本地搜索实例
+            var localSearch = new BMap.LocalSearch(map, {
+                renderOptions: {
+                    map: map,
+                    autoViewport: true,
+                    selectFirstResult: true
+                },
+                pageCapacity: 10,
+                onSearchComplete: function(results) {
+                    if (results && results.getNumPois() > 0) {
+                        // 可以在这里处理搜索结果
+                        var firstResult = results.getPoi(0);
+                        var point = firstResult.point;
+                        var marker = new BMap.Marker(point);
+                        map.addOverlay(marker);
+
+                        var infoWindow = new BMap.InfoWindow(
+                            "<div style='padding:10px'>" +
+                            "<h4 style='margin:0 0 5px 0'>" + firstResult.title + "</h4>" +
+                            "<p style='margin:0;line-height:1.5;font-size:13px'>" +
+                            firstResult.address +
+                            "</p>" +
+                            "</div>"
+                        );
+
+                        marker.addEventListener("click", function(){
+                            map.openInfoWindow(infoWindow, point);
+                        });
+
+                        // 默认打开第一个结果的信息窗口
+                        map.openInfoWindow(infoWindow, point);
+                    } else {
+                        alert('未找到相关地点');
+                    }
+                }
+            });
+
+            // 如果传入了关键词，立即搜索
+            if (keyword) {
+                localSearch.search(keyword);
+            }
+        }
+
+        // 页面加载完成后初始化地图
+        window.onload = function() {
+            initMap("皮影戏");
+        };
+    </script>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        const slider = document.querySelector('.slider');
+
+        function activate(e) {
+            const items = document.querySelectorAll('.item');
+            e.target.matches('.next') && slider.append(items[0]);
+            e.target.matches('.prev') && slider.prepend(items[items.length - 1]);
+        }
+
+        document.addEventListener('click', activate, false);
+
+        // 自动播放功能，每4秒播放下一张
+        setInterval(() => {
+            const items = document.querySelectorAll('.item');
+            slider.append(items[0]);
+        }, 4000);
+    </script>
+    <script src="../static/js/upload.js"></script>
+    <script src="../static/js/trigger.js"></script>
+
+    <!-- 上传图片的插件 -->
+</body>
+
+</html>
