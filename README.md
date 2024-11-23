@@ -6,6 +6,10 @@
 | 按后端返回id渲染展示对应图片   |   返回后端匹配到的id   | 图像匹配   |
 | 桌角姬   |   *返回后端克隆的桌角姬语音   | *声音克隆   |
 
+# 数据集
+
+oss存储
+
 # 展示
 
 【展示视频终稿】https://www.bilibili.com/video/BV1ojByYWE8L?vd_source=9d5a20d07b186d9be474356eb99cec16
