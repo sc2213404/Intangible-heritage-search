@@ -9,6 +9,7 @@
 # 数据集
 
 oss存储
+https://feiyituxun.oss-cn-beijing.aliyuncs.com/images
 
 # 展示
 
