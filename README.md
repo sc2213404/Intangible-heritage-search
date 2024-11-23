@@ -8,6 +8,7 @@
 
 # 展示
 
+【展示视频终稿】https://www.bilibili.com/video/BV1ojByYWE8L?vd_source=9d5a20d07b186d9be474356eb99cec16
 
 # Image-Retrieval
 Image retrieval program made in Tensorflow supporting the pretrained networks VGG16, VGG19, InceptionV3 and InceptionV4 and own trained Convolutional Autoencoder that you can train with this tool.
